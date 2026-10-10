@@ -37,3 +37,19 @@ test('Swag Invalid Login', async ({ page }) => {
 
 });
 
+test('Swag Blank Login', async ({ page }) => { 
+ await page.goto('https://www.saucedemo.com/');
+//await page.goto('/');
+
+ await page.waitForTimeout(3000); 
+
+ await expect(page).toHaveTitle(/Swag Labs/);
+
+ await page.getByRole('textbox', { name: 'Username' }).fill('');
+ //await page.pause();
+ await page.getByRole('textbox', { name: 'Password' }).fill('');
+
+ await page.getByRole('button', { name: 'Login' }).click();
+
+});
+
